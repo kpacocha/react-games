@@ -11,6 +11,7 @@ export default class Header extends Component {
 		      <NavLink to="/app" exact activeClassName="active">Home</NavLink>
 		      <NavLink to="/app/users" activeClassName="active">Users</NavLink>
 		      <NavLink to="/app/games" activeClassName="active">Games</NavLink>
+		      <NavLink to="/app/plays" activeClassName="active">Plays</NavLink>
 		    </nav>
 		  </header>
   	);
