@@ -1,45 +1,36 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
-const games = [
-	{
-	id: 0,
-	name: 'Carcassone',
-	dateAdd: '2017-09-25'
-	},{
-	id: 1,
-	name: 'Obóz ninja',
-	dateAdd: '2017-09-25'
-	},{
-	id: 2,
-	name: 'Pory roku',
-	dateAdd: '2017-09-25'
-	},{
-	id: 4,
-	name: 'Cytadela',
-	dateAdd: '2017-09-25'
-	}
-]
+import fetch from 'isomorphic-fetch';
 
 export default class GamesPage extends Component {
 	constructor(props) {
 	  super(props);
 	  this.state = {
-	    games: games
+	    games: []
 	  };
 	}
 
+	componentWillMount(){
+    fetch('http://localhost:3001/games')
+      .then((response) => {
+        return response.json()
+      })
+      .then((games) => {
+        this.setState({ games })
+      })
+  }
+
 	__renderGame(game) {
 		return(
-			<tr key={game.id}>
+			<tr key={game.gameId}>
 				<td>
-					<Link to={`${this.props.match.path}/${game.id}`}>{game.id}</Link>
+					<Link to={`${this.props.match.path}/${game.gameId}`}>{game.gameId}</Link>
 				</td>
 				<td>
-					<Link to={`${this.props.match.path}/${game.id}`}>{game.name}</Link>
+					<Link to={`${this.props.match.path}/${game.gameId}`}>{game.gameName}</Link>
 				</td>
 				<td>
-					<Link to={`${this.props.match.path}/${game.id}`}>{game.dateAdd}</Link>
+					<Link to={`${this.props.match.path}/${game.gameId}`}>{game.dateAdd}</Link>
 				</td>
 			</tr>
 			
@@ -47,7 +38,7 @@ export default class GamesPage extends Component {
 	}
 
   __renderTable() {
-  	console.log(this.state.games);
+
   	return(
 	    <div>
 		    <h3>Browse Games</h3>
@@ -59,7 +50,7 @@ export default class GamesPage extends Component {
 		    			<th>Name</th>
 		    			<th>Date of add</th>
 		    		</tr>
-		    	{this.state.games.map(game => this.__renderGame(game))}
+		    	{this.state.games && this.state.games.map(game => this.__renderGame(game))}
 		    	</tbody>
 		    </table>
 		  </div>
