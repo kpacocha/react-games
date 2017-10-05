@@ -20,17 +20,20 @@ export default class PlaysPage extends Component {
       })
   }
 
-	__renderplay(play) {
+	__renderplay(play, index) {
 		return(
 			<tr key={play.playId}>
 				<td>
-					<Link to={`${this.props.match.path}/${play.playId}`}>{play.playId}</Link>
+					<Link to={`${this.props.match.path}/${play.playId}`}>{index}</Link>
+				</td>
+				<td>
+					{play.gameName}
+				</td>
+				<td>
+					{play.results}
 				</td>
 				<td>
 					{play.date}
-				</td>
-				<td>
-					{play.gameId}
 				</td>
 			</tr>
 			
@@ -46,11 +49,12 @@ export default class PlaysPage extends Component {
 		    <table>
 		    	<tbody>
 		    		<tr>
-		    			<th></th>
+		    			<th>Id</th>
+		    			<th>Game name</th>
+		    			<th>Players</th>
 		    			<th>Date</th>
-		    			<th>Game id</th>
 		    		</tr>
-		    	{this.state.plays && this.state.plays.map(play => this.__renderplay(play))}
+		    	{this.state.plays && this.state.plays.map((play,index) => this.__renderplay(play,index))}
 		    	</tbody>
 		    </table>
 		  </div>
