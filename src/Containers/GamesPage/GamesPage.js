@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import fetch from 'isomorphic-fetch';
 
+import { parseTimestamp } from '../../utils/parseTimestamp'
+
 export default class GamesPage extends Component {
 	constructor(props) {
 	  super(props);
@@ -30,12 +32,16 @@ export default class GamesPage extends Component {
 					<Link to={`${this.props.match.path}/${game.gameId}`}>{game.gameName}</Link>
 				</td>
 				<td>
-					<Link to={`${this.props.match.path}/${game.gameId}`}>{game.dateAdd}</Link>
+					<Link to={`${this.props.match.path}/${game.gameId}`}>
+						{parseTimestamp(game.addingDate)}
+					</Link>
 				</td>
 			</tr>
 			
 		);
 	}
+
+
 
   __renderTable() {
 

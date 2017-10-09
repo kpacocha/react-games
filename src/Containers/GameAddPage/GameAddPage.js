@@ -1,7 +1,4 @@
-
-
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import fetch from 'isomorphic-fetch';
 import Form from 'react-jsonschema-form';
 
@@ -11,7 +8,12 @@ const schema = {
   type: "object",
   required: ["gameName"],
   properties: {
-    gameName: {type: "string", title: "Title"}
+    gameName: {type: "string", title: "Game name"},
+    addingDate: {
+      type: "string",
+      title: "Adding date",
+      format: "date-time"
+    }
   }
 };
 
