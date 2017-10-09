@@ -17,6 +17,12 @@ const schema = {
   }
 };
 
+const uiSchema = {
+  "addingDate": {
+    "ui:widget": "alt-datetime"
+  }
+};
+
 const log = (type) => console.log.bind(console, type);
 
 export default class GameAddPage extends Component {
@@ -51,6 +57,7 @@ export default class GameAddPage extends Component {
 	    	<div>Add new game</div>
 
         <Form schema={schema}
+        uiSchema={uiSchema}
         onChange={log("changed")}
         onSubmit={this.__addGame}
         onError={log("errors")} />
