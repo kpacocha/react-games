@@ -3,32 +3,31 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import fetch from 'isomorphic-fetch';
+import Form from 'react-jsonschema-form';
 
 // TODO: change bind to arrow, use jsonschemaform
+const schema = {
+  title: "New game",
+  type: "object",
+  required: ["gameName"],
+  properties: {
+    gameName: {type: "string", title: "Title"}
+  }
+};
+
+const log = (type) => console.log.bind(console, type);
 
 export default class GameAddPage extends Component {
 	constructor(props) {
     super(props);
     this.state = {value: ''};
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-
-    const data = {
-      gameName: this.state.value
-    }
-
+  __addGame = (data) => {
     const fetchData = {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify(data.formData),
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -44,23 +43,16 @@ export default class GameAddPage extends Component {
       });
   }
 
-  __render_form() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Game Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
-
   render() {
     return (
     	<div>
 	    	<div>Add new game</div>
-	    	{this.__render_form() }
+
+        <Form schema={schema}
+        onChange={log("changed")}
+        onSubmit={this.__addGame}
+        onError={log("errors")} />
+
     	</div>
     );
   }
