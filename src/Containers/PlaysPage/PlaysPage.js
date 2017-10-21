@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import fetch from 'isomorphic-fetch';
+import classNames from 'classnames';
+
+import './PlaysPage.css';
 
 export default class PlaysPage extends Component {
 	constructor(props) {
@@ -21,6 +24,9 @@ export default class PlaysPage extends Component {
   }
 
 	__renderplay(play, index) {
+		const results = JSON.parse(`[${play.results}]`);
+		console.log(results);
+		console.log(play.winner);
 		return(
 			<tr key={play.playId}>
 				<td>
@@ -30,7 +36,13 @@ export default class PlaysPage extends Component {
 					{play.gameName}
 				</td>
 				<td>
-					{play.results}
+					{results.map(result => {
+						return(
+							<div className={classNames({ 'winner': result.userId === play.winner })}>
+								{result.login} - {result.result}
+							</div>
+							)
+					})}
 				</td>
 				<td>
 					{play.date}
