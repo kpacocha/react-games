@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import fetch from 'isomorphic-fetch';
 import classNames from 'classnames';
 
+import { NavLink } from 'react-router-dom'
+
 import './PlaysPage.css';
 
 export default class PlaysPage extends Component {
@@ -33,13 +35,14 @@ export default class PlaysPage extends Component {
 					<Link to={`${this.props.match.path}/${play.playId}`}>{index}</Link>
 				</td>
 				<td>
-					{play.gameName}
+					<NavLink to={`games/${play.gameId}`} activeClassName="active">{play.gameName}</NavLink>
 				</td>
 				<td>
 					{results.map(result => {
 						return(
 							<div className={classNames({ 'winner': result.userId === play.winner })}>
-								{result.login} - {result.result}
+								<NavLink to={`users/${result.userId}`} activeClassName="active">{result.login}</NavLink>
+								 - {result.result}
 							</div>
 							)
 					})}

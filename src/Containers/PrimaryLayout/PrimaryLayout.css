@@ -8,3 +8,8 @@
 
 .form {
   max-width: 500px; }
+
+table tr {
+  border-bottom: 1px solid lightgrey; }
+  table tr td, table tr th {
+    padding: 5px 10px; }
