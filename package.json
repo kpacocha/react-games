@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "es6-promise": "^4.1.1",
     "express": "^4.15.5",
     "isomorphic-fetch": "^2.2.1",
     "mysql": "^2.14.1",
     "react": "^15.6.1",
+    "react-bootstrap": "^0.31.3",
     "react-dom": "^15.6.1",
     "react-jsonschema-form": "^0.51.0",
     "react-redux": "^5.0.6",
