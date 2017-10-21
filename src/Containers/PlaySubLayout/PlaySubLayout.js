@@ -8,11 +8,7 @@ import PlayEditPage from '../PlayEditPage/PlayEditPage'
 
 const PlaySubLayout = ({ match }) => (
   <div className="user-sub-layout">
-    <aside>
-      <nav>
-      	<NavLink to={`${match.path}/add`} activeClassName="active">Add new play</NavLink>
-      </nav>
-    </aside>
+    
     <div className="primary-content">
       <Switch>
         <Route path={match.path} exact component={PlaysPage} />
@@ -25,3 +21,9 @@ const PlaySubLayout = ({ match }) => (
 )
 
 export default PlaySubLayout
+
+// <aside>
+//       <nav>
+//         <NavLink to={`${match.path}/add`} activeClassName="active">Add new play</NavLink>
+//       </nav>
+//     </aside>

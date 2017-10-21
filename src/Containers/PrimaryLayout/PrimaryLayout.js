@@ -8,10 +8,12 @@ import UserSubLayout from '.././UserSubLayout/UserSubLayout'
 import GameSubLayout from '.././GameSubLayout/GameSubLayout'
 import PlaySubLayout from '.././PlaySubLayout/PlaySubLayout'
 
+import './PrimaryLayout.css';
+
 const PrimaryLayout = ({ match }) => (
-  <div className="primary-layout">
+  <div className="primary-layout site">
     <Header />
-    <main>
+    <main className="site-content">
       <Switch>
         <Route path={`${match.path}`} exact component={AppHomePage} />
         <Route path={`${match.path}/users`} component={UserSubLayout} />
@@ -20,6 +22,9 @@ const PrimaryLayout = ({ match }) => (
         <Redirect to={`${match.url}`} />
       </Switch>
     </main>
+    <footer>
+      Copyright
+    </footer>
   </div>
 )
 

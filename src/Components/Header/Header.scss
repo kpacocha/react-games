@@ -1,0 +1,14 @@
+.header {
+	border-bottom: 1px solid grey;
+	text-align: center;
+
+	.header-menu {
+		list-style-type: none;
+
+		.header-menu-item {
+			display: inline-block;
+			margin: 0 20px;
+			padding: 0;
+		}
+	}
+}

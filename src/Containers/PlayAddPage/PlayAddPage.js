@@ -104,17 +104,13 @@ export default class PlayAddPage extends Component {
     	<div>
 	    	<h6>Add new play page</h6>
 
-	    	<button onClick={this.__addPlay}>
-	    	Add play
-	    	</button>
-
 	    	<Form schema={schema}
-	    	uiSchema={uiSchema}
-        onChange={log("changed")}
-        onSubmit={this.__addPlay}
-        onError={log("errors")} />
-
-
+				    	uiSchema={uiSchema}
+			        onChange={log("changed")}
+			        onSubmit={this.__addPlay}
+			        onError={log("errors")}
+			        className="form" 
+        />
 
     	</div>
     );
