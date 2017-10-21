@@ -12,3 +12,12 @@
 .form {
 	max-width: 500px;
 }
+
+table {
+	tr {
+	  border-bottom: 1px solid lightgrey;
+		td, th {
+			padding: 5px 10px;
+		}
+	}
+}
