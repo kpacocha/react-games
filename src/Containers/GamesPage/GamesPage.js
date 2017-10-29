@@ -36,6 +36,9 @@ export default class GamesPage extends Component {
 						{parseTimestamp(game.addingDate)}
 					</Link>
 				</td>
+				<td>
+					<Link to={`${this.props.match.path}/${game.gameId}`}>{game.count}</Link>
+				</td>
 			</tr>
 			
 		);
@@ -55,6 +58,7 @@ export default class GamesPage extends Component {
 		    			<th></th>
 		    			<th>Name</th>
 		    			<th>Date of add</th>
+		    			<th>Added plays</th>
 		    		</tr>
 		    	{this.state.games && this.state.games.map(game => this.__renderGame(game))}
 		    	</tbody>

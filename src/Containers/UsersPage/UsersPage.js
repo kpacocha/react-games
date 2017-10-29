@@ -35,6 +35,12 @@ export default class UsersPage extends Component {
 				<td>
 					{user.email}
 				</td>
+				<td>
+					{user.finishedPlays}
+				</td>
+				<td>
+					{user.winPlays}
+				</td>
 			</tr>
 			
 		);

@@ -1,6 +1,9 @@
+@import '../../variables';
+
 .header {
 	border-bottom: 1px solid grey;
 	text-align: center;
+	background: $dark-primary-color;
 
 	.header-menu {
 		list-style-type: none;

@@ -4,6 +4,7 @@ import fetch from 'isomorphic-fetch';
 import classNames from 'classnames';
 
 import { NavLink } from 'react-router-dom'
+import { parseTimestamp } from '../../utils/parseTimestamp'
 
 import './PlaysPage.css';
 
@@ -48,7 +49,7 @@ export default class PlaysPage extends Component {
 					})}
 				</td>
 				<td>
-					{play.date}
+					{parseTimestamp(play.date)}
 				</td>
 			</tr>
 			

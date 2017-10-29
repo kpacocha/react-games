@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
+import {Button, Icon} from 'react-materialize'
 
 import './Header.css';
 
@@ -25,6 +26,9 @@ export default class Header extends Component {
 		    		</li>
 		    		<li className="header-menu-item">
 		    			<NavLink to="/app/plays/add" activeClassName="active">Add new play</NavLink>
+		    		</li>
+		    		<li>
+		    			<Button waves='light'>EDIT ME<Icon left>save</Icon></Button>
 		    		</li>
 		    	</ul>
 		    </nav>
