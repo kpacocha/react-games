@@ -1,17 +1,22 @@
 import React from 'react';
 import { Route, Switch, NavLink } from 'react-router-dom'
-
+import { withRouter } from 'react-router-dom'
 import GamesPage from '../GamesPage/GamesPage'
 import GameDetailsPage from '../GameDetailsPage/GameDetailsPage'
 import GameAddPage from '../GameAddPage/GameAddPage'
 import GameEditPage from '../GameEditPage/GameEditPage'
+import RaisedButton from 'material-ui/RaisedButton';
+
+const GameNav = ({ match }) => (
+  <div>
+    <RaisedButton label="Add new game" primary={true} href={`${match.path}/add`} /> 
+  </div>
+);
 
 const GameSubLayout = ({ match }) => (
   <div className="user-sub-layout">
     <aside>
-      <nav>
-      	<NavLink to={`${match.path}/add`} activeClassName="active">Add new game</NavLink>
-      </nav>
+      <GameNav match={match}/>
     </aside>
     <div className="primary-content">
       <Switch>
@@ -24,4 +29,4 @@ const GameSubLayout = ({ match }) => (
   </div>
 )
 
-export default GameSubLayout
+export default withRouter(GameSubLayout)

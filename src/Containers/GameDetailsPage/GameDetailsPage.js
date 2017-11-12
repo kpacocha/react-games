@@ -1,14 +1,27 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
-
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import FontIcon from 'material-ui/FontIcon';
 
 const GameDetailsPage = ({ match }) => (
-	<div>
-		<h5>Game #{match.params.gameId} details</h5>
-	  <nav className="context-nav">
-	    <NavLink to={`${match.params.gameId}/edit`} exact activeClassName="active">Edit Game</NavLink>
-	  </nav>
-  </div>
+  <Card>
+    <CardHeader
+      title={`Game #${match.params.gameId} details`}
+      subtitle=""
+      avatar="images/jsa-128.jpg"
+    />
+    <CardTitle 
+    	title={`Game #${match.params.gameId} details`}
+    	subtitle="" 
+    />
+    <CardText>
+    </CardText>
+    <CardActions>
+      <FlatButton label="Delete" />
+      <FlatButton label="Edit game" primary href={`${match.params.gameId}/edit`}/>
+    />
+    </CardActions>
+  </Card>
 )
 
 export default GameDetailsPage;
