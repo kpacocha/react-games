@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table';
 import fetch from 'isomorphic-fetch';
 
 export default class UsersPage extends Component {
@@ -22,26 +30,26 @@ export default class UsersPage extends Component {
 
 	__renderUser(user) {
 		return(
-			<tr key={user.userId}>
-				<td>
+			<TableRow key={user.userId} selectable={false}>
+				<TableRowColumn>
 					<Link to={`${this.props.match.path}/${user.userId}`}>{user.userId}</Link>
-				</td>
-				<td>
+				</TableRowColumn>
+				<TableRowColumn>
 					{user.login}
-				</td>
-				<td>
+				</TableRowColumn>
+				<TableRowColumn>
 					{user.userName}
-				</td>
-				<td>
+				</TableRowColumn>
+				<TableRowColumn>
 					{user.email}
-				</td>
-				<td>
+				</TableRowColumn>
+				<TableRowColumn>
 					{user.finishedPlays}
-				</td>
-				<td>
+				</TableRowColumn>
+				<TableRowColumn>
 					{user.winPlays}
-				</td>
-			</tr>
+				</TableRowColumn>
+			</TableRow>
 			
 		);
 	}
@@ -52,17 +60,19 @@ export default class UsersPage extends Component {
 	    <div>
 		    <h3>Browse Users</h3>
 
-		    <table>
-		    	<tbody>
-		    		<tr>
-		    			<th></th>
-		    			<th>Login</th>
-		    			<th>User name</th>
-		    			<th>Date of add</th>
-		    		</tr>
+		    <Table selectable={false}>
+		    	<TableHeader>
+		    		<TableRow>
+		    			<TableHeaderColumn></TableHeaderColumn>
+		    			<TableHeaderColumn>Login</TableHeaderColumn>
+		    			<TableHeaderColumn>User name</TableHeaderColumn>
+		    			<TableHeaderColumn>Date of add</TableHeaderColumn>
+		    		</TableRow>
+	    		</TableHeader>
+	    		<TableBody>
 		    	{this.state.users && this.state.users.map(user => this.__renderUser(user))}
-		    	</tbody>
-		    </table>
+		    	</TableBody>
+		    </Table>
 		  </div>
   	);
   }
