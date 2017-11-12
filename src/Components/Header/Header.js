@@ -1,44 +1,31 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
-import {Button, Icon} from 'react-materialize'
+import IconButton from 'material-ui/IconButton';
+import MenuItem from 'material-ui/MenuItem';
+import RaisedButton from 'material-ui/RaisedButton';
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 
 import './Header.css';
 
 export default class Header extends Component {
-
-  __renderMenu() {
-  	return(
-	    <header className="header">
-		    <h1>Save Your Result</h1>
-		    <nav>
-		    	<ul className="header-menu">
-		    		<li className="header-menu-item">
-		    			<NavLink to="/app" exact activeClassName="active">Home</NavLink>
-		    		</li>
-		    		<li className="header-menu-item">
-		    			<NavLink to="/app/users" activeClassName="active">Users</NavLink>
-		    		</li>
-		    		<li className="header-menu-item">
-		    			<NavLink to="/app/games" activeClassName="active">Games</NavLink>
-		    		</li>
-		    		<li className="header-menu-item">
-		    			<NavLink to="/app/plays" activeClassName="active">Plays</NavLink>
-		    		</li>
-		    		<li className="header-menu-item">
-		    			<NavLink to="/app/plays/add" activeClassName="active">Add new play</NavLink>
-		    		</li>
-		    		<li>
-		    			<Button waves='light'>EDIT ME<Icon left>save</Icon></Button>
-		    		</li>
-		    	</ul>
-		    </nav>
-		  </header>
+  __renderHeader() {
+  	return (
+  		<Toolbar>
+  			<ToolbarTitle text="Save Your Result" />
+        <ToolbarGroup lastChild={true}>
+        	<MenuItem primaryText="Home" href="/app" />
+        	<MenuItem primaryText="Users" href="/app/users" />
+        	<MenuItem primaryText="Games" href="/app/games" />
+        	<MenuItem primaryText="Plays" href="/app/plays" />
+          <ToolbarSeparator />
+          <RaisedButton label="Add new play" primary={true} href="/app/plays/add" />
+        </ToolbarGroup>
+      </Toolbar>
   	);
   }
 
   render() {
     return (
-		  this.__renderMenu()
+		  this.__renderHeader()
     );
   }
 }
