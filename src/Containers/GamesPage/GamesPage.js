@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import fetch from 'isomorphic-fetch';
+import Table from 'material-ui/Table';
 
 import { parseTimestamp } from '../../utils/parseTimestamp'
 
@@ -18,6 +19,7 @@ export default class GamesPage extends Component {
         return response.json()
       })
       .then((games) => {
+      	console.log(games);
         this.setState({ games })
       })
   }
@@ -52,17 +54,20 @@ export default class GamesPage extends Component {
 	    <div>
 		    <h3>Browse Games</h3>
 
-		    <table>
-		    	<tbody>
+		    <Table hoverable responsive bordered>
+
+		    	<thead>
 		    		<tr>
 		    			<th></th>
 		    			<th>Name</th>
 		    			<th>Date of add</th>
 		    			<th>Added plays</th>
 		    		</tr>
+		    	</thead>
+		    	<tbody>
 		    	{this.state.games && this.state.games.map(game => this.__renderGame(game))}
 		    	</tbody>
-		    </table>
+		    </Table>
 		  </div>
   	);
   }

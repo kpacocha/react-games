@@ -1,11 +1,13 @@
 import React from 'react'
 import { NavLink, withRouter } from 'react-router-dom'
+import RaisedButton from 'material-ui/RaisedButton';
+import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar';
+
 
 const UserNav = ({ match }) => (
-  <nav className="context-nav">
-    <NavLink to={`${match.path}`} exact activeClassName="active">Browse</NavLink>
-    <NavLink to={`${match.path}/add`} activeClassName="active">Add</NavLink>
-  </nav>
-)
+	<div>
+    <RaisedButton label="Add new user" primary={true} href={`${match.path}/add`} />	
+  </div>
+);
 
 export default withRouter(UserNav)
