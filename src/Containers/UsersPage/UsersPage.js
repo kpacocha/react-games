@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
 import fetch from 'isomorphic-fetch';
+import TableCustom from '../../Components/TableCustom/TableCustom';
 
 export default class UsersPage extends Component {
 	constructor(props) {
@@ -55,33 +52,19 @@ export default class UsersPage extends Component {
 	}
 
   __renderTable() {
-
+  	const headers = ['Login', 'User name', 'Email', 'Played games', 'Win games'];
   	return(
-	    <div>
-		    <h3>Browse Users</h3>
-
-		    <Table selectable={false}>
-		    	<TableHeader displaySelectAll={false}
-		    							 adjustForCheckbox={false}>
-		    		<TableRow>
-		    			<TableHeaderColumn></TableHeaderColumn>
-		    			<TableHeaderColumn>Login</TableHeaderColumn>
-		    			<TableHeaderColumn>User name</TableHeaderColumn>
-		    			<TableHeaderColumn>Date of add</TableHeaderColumn>
-		    		</TableRow>
-	    		</TableHeader>
-	    		<TableBody displayRowCheckbox={false}>
+	    <TableCustom headers={headers}>
 		    	{this.state.users && this.state.users.map(user => this.__renderUser(user))}
-		    	</TableBody>
-		    </Table>
-		  </div>
+		    </TableCustom>
   	);
   }
 
   render() {
+  	
     return (
     	<div className="UsersPage">
-		    {this.__renderTable()}
+		    {this.__renderTable()}	    
 		  </div>
     );
   }

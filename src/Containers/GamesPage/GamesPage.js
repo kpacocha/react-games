@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import fetch from 'isomorphic-fetch';
-import Table from 'material-ui/Table';
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table'
+import TableCustom from '../../Components/TableCustom/TableCustom';
 
 import { parseTimestamp } from '../../utils/parseTimestamp'
 
@@ -26,49 +34,32 @@ export default class GamesPage extends Component {
 
 	__renderGame(game) {
 		return(
-			<tr key={game.gameId}>
-				<td>
+			<TableRow key={game.gameId}>
+				<TableRowColumn>
 					<Link to={`${this.props.match.path}/${game.gameId}`}>{game.gameId}</Link>
-				</td>
-				<td>
+				</TableRowColumn>
+				<TableRowColumn>
 					<Link to={`${this.props.match.path}/${game.gameId}`}>{game.gameName}</Link>
-				</td>
-				<td>
+				</TableRowColumn>
+				<TableRowColumn>
 					<Link to={`${this.props.match.path}/${game.gameId}`}>
 						{parseTimestamp(game.addingDate)}
 					</Link>
-				</td>
-				<td>
+				</TableRowColumn>
+				<TableRowColumn>
 					<Link to={`${this.props.match.path}/${game.gameId}`}>{game.count}</Link>
-				</td>
-			</tr>
+				</TableRowColumn>
+			</TableRow>
 			
 		);
 	}
 
-
-
   __renderTable() {
-
+  	const headers = ['Name', 'Date of add', 'Added plays'];
   	return(
-	    <div>
-		    <h3>Browse Games</h3>
-
-		    <Table hoverable responsive bordered>
-
-		    	<thead>
-		    		<tr>
-		    			<th></th>
-		    			<th>Name</th>
-		    			<th>Date of add</th>
-		    			<th>Added plays</th>
-		    		</tr>
-		    	</thead>
-		    	<tbody>
-		    	{this.state.games && this.state.games.map(game => this.__renderGame(game))}
-		    	</tbody>
-		    </Table>
-		  </div>
+	    <TableCustom headers={headers}>
+	    	{this.state.games && this.state.games.map(game => this.__renderGame(game))}
+	    </TableCustom>
   	);
   }
 

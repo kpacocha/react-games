@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import { NavLink } from 'react-router-dom'
 import { parseTimestamp } from '../../utils/parseTimestamp'
+import TableCustom from '../../Components/TableCustom/TableCustom';
 
 import './PlaysPage.css';
 
@@ -57,23 +58,11 @@ export default class PlaysPage extends Component {
 	}
 
   __renderTable() {
-
+  	const headers = ['Game name', 'Players', 'Date'];
   	return(
-	    <div>
-		    <h3>Browse plays</h3>
-
-		    <table>
-		    	<tbody>
-		    		<tr>
-		    			<th>Id</th>
-		    			<th>Game name</th>
-		    			<th>Players</th>
-		    			<th>Date</th>
-		    		</tr>
-		    	{this.state.plays && this.state.plays.map((play,index) => this.__renderplay(play,index))}
-		    	</tbody>
-		    </table>
-		  </div>
+	    <TableCustom headers={headers}>
+	    	{this.state.plays && this.state.plays.map((play,index) => this.__renderplay(play,index))}
+	    </TableCustom>
   	);
   }
 
