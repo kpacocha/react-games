@@ -61,7 +61,8 @@ export default class UsersPage extends Component {
 		    <h3>Browse Users</h3>
 
 		    <Table selectable={false}>
-		    	<TableHeader>
+		    	<TableHeader displaySelectAll={false}
+		    							 adjustForCheckbox={false}>
 		    		<TableRow>
 		    			<TableHeaderColumn></TableHeaderColumn>
 		    			<TableHeaderColumn>Login</TableHeaderColumn>
@@ -69,7 +70,7 @@ export default class UsersPage extends Component {
 		    			<TableHeaderColumn>Date of add</TableHeaderColumn>
 		    		</TableRow>
 	    		</TableHeader>
-	    		<TableBody>
+	    		<TableBody displayRowCheckbox={false}>
 		    	{this.state.users && this.state.users.map(user => this.__renderUser(user))}
 		    	</TableBody>
 		    </Table>
