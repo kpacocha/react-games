@@ -32,9 +32,16 @@ export default class GamesPage extends Component {
       })
   }
 
+  __onClickRow() {
+		console.log('row click');
+	}
+
+
 	__renderGame(game) {
 		return(
-			<TableRow key={game.gameId}>
+			<TableRow
+				key={game.gameId}
+				onClick={()=> {alert('Click event on row')}}	>
 				<TableRowColumn>
 					<Link to={`${this.props.match.path}/${game.gameId}`}>{game.gameId}</Link>
 				</TableRowColumn>
