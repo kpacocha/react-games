@@ -2,6 +2,7 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Header from '../../Components/Header/Header'
 import { logout } from '../../utils/xhr'
+import RaisedButton from 'material-ui/RaisedButton';
 
 // Sub Layouts
 import UserSubLayout from '.././UserSubLayout/UserSubLayout'
@@ -35,12 +36,10 @@ export default PrimaryLayout
 
 const AppHomePage = ({ history }) => (
   <div>
-    App Home Page
-    <br /><br />
-    <button onClick={() => {
+    <RaisedButton label="Logout" primary={true} onClick={() => {
       logout().then(() => {
         history.push('/')
       })
-    }}>Logout</button>
+    }} />
   </div>
 )
