@@ -1,11 +1,12 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-
 // Pages
 import LoginPage from '../LoginPage/LoginPage'
 
 const UnauthorizedLayout = () => (
   <div className="unauthorized-layout">
+
+  <main className="site-content">
     {/*
     
     Imagine this could be a general layout for all unauthorized pages like
@@ -18,7 +19,10 @@ const UnauthorizedLayout = () => (
       <Route path="/auth/login" component={LoginPage} />
       <Redirect to="/auth/login" />
     </Switch>
+    </main>
   </div>
 )
 
 export default UnauthorizedLayout
+
+

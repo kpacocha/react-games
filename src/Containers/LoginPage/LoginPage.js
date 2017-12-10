@@ -1,23 +1,35 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { login } from '../../utils/xhr'
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField';
+
+import './LoginPage.css';
 
 const LoginPage = ({ history }) => (
-  <div>
-    <Paper>
-    <h1>Login Page</h1>
-    <p>
-      For this example application, we cannot visit <Link to="/app">/app</Link> until we are logged in.
-      Clicking the "Login" button will simulate a login by setting Redux state.
-    </p>
+  <div className="LoginPage">
+  <Paper style={{padding: 20}}>
+    <h3>Save Your Result</h3>
+    <h3>Login-in to your account</h3>
+    
+      <TextField
+        hintText="Login"
+        fullWidth
+      /><br />
+      <br />
+      <TextField
+        hintText="Password"
+        type="password"
+        fullWidth
 
-    <RaisedButton label="Login" primary={true} onClick={() => {
-      login().then(() => {
-        history.push('/app')
-      })
-    }} />
+      /><br />
+
+
+      <RaisedButton label="Login" primary={true} fullWidth onClick={() => {
+        login().then(() => {
+          history.push('/app')
+        })
+      }} />
 
     </Paper>
   </div>
