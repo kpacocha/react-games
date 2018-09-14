@@ -29,8 +29,6 @@ export default class PlaysPage extends Component {
 
 	__renderplay(play, index) {
 		const results = JSON.parse(`[${play.results}]`);
-		console.log(results);
-		console.log(play.winner);
 		return(
 			<tr key={play.playId}>
 				<td>

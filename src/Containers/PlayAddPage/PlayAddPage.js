@@ -2,6 +2,13 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-fetch';
 import Form from 'react-jsonschema-form';
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
+import Subheader from 'material-ui/Subheader';
+import Divider from 'material-ui/Divider';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import TextField from 'material-ui/TextField';
 
 // TODO: change bind to arrow, use jsonschemaform
 
@@ -12,7 +19,17 @@ export default class PlayAddPage extends Component {
     super(props);
     this.state = {
     	games: [],
-    	users: []
+    	users: [],
+      data: {
+        gameId: null,
+        results: 
+        [
+          {
+            userId: 1,
+            result: 23
+          }
+        ]
+      }
     };
 
   }
@@ -28,7 +45,9 @@ export default class PlayAddPage extends Component {
         return response.json()
       })
       .then((games) => {
-        this.setState({ games })
+        this.setState({ 
+          games
+        })
       })
   }
 
@@ -43,6 +62,8 @@ export default class PlayAddPage extends Component {
   }
 
   __addPlay = (data) => {
+    console.log(data.formData);
+
     const fetchData = {
       method: 'POST',
       body: JSON.stringify(data.formData),
@@ -62,7 +83,30 @@ export default class PlayAddPage extends Component {
       });
   }
 
+  handleChange = (event, index, value) => {
+    const data = {...this.state.data};
+    data.gameId = value;
+    this.setState({ data });
+  }
+
+  __renderGame(game,index) {
+    return (
+      <div>{game.gameName}</div>
+    );
+  }
+
+  __addResult = () => {
+    const data = {...this.state.data};
+    data.results.push({
+      userId: null,
+      result: null
+    });
+    this.setState({ data });
+  }
+
   render() {
+    console.log(this.state.data);
+
   	const schema = {
 		  title: "New play",
 		  type: "object",
@@ -102,23 +146,17 @@ export default class PlayAddPage extends Component {
 
     return (
     	<div>
-	    	<h6>Add new play page</h6>
+        <h6>Add new play page</h6>
 
 	    	<Form schema={schema}
 				    	uiSchema={uiSchema}
 			        onChange={log("changed")}
 			        onSubmit={this.__addPlay}
 			        onError={log("errors")}
-			        className="form" 
+			        className="form"
         />
-
     	</div>
     );
   }
 }
 
-        // <Form schema={schema}
-        // uiSchema={uiSchema}
-        // onChange={log("changed")}
-        // onSubmit={this.__addGame}
-        // onError={log("errors")} />

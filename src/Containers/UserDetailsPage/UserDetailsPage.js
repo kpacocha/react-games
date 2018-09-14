@@ -3,12 +3,6 @@ import { NavLink } from 'react-router-dom'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
-	// <div>
-	// 	<h5>User #{match.params.userId} details</h5>
-	//   <nav className="context-nav">
-	//     <NavLink to={`${match.params.userId}/edit`} exact activeClassName="active">Edit user</NavLink>
-	//   </nav>
- //  </div>
 
     //  <CardMedia
     //   overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}

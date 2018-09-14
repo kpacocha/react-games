@@ -22,7 +22,7 @@ export default class GamesPage extends Component {
 	}
 
 	componentWillMount(){
-    fetch('http://localhost:3001/games')
+    fetch('http://192.168.0.16:3001/games')
       .then((response) => {
         return response.json()
       })
