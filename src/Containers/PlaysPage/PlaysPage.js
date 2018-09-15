@@ -7,6 +7,8 @@ import { NavLink } from 'react-router-dom'
 import { parseTimestamp } from '../../utils/parseTimestamp'
 import TableCustom from '../../Components/TableCustom/TableCustom';
 
+import config from '../../config';
+
 import './PlaysPage.css';
 
 export default class PlaysPage extends Component {
@@ -18,7 +20,7 @@ export default class PlaysPage extends Component {
 	}
 
 	componentWillMount(){
-    fetch('http://localhost:3001/plays')
+    fetch(config.api.plays)
       .then((response) => {
         return response.json()
       })

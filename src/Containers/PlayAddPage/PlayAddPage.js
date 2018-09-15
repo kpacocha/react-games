@@ -9,8 +9,9 @@ import Divider from 'material-ui/Divider';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import TextField from 'material-ui/TextField';
+import config from '../../config';
 
-// TODO: change bind to arrow, use jsonschemaform
+// TODO: change bind to arrow
 
 const log = (type) => console.log.bind(console, type);
 
@@ -40,7 +41,7 @@ export default class PlayAddPage extends Component {
   }
 
   __getGames() {
-  	fetch('http://localhost:3001/games')
+  	fetch(config.api.games)
       .then((response) => {
         return response.json()
       })
@@ -52,7 +53,7 @@ export default class PlayAddPage extends Component {
   }
 
   __getUsers() {
-  	fetch('http://localhost:3001/users')
+  	fetch(config.api.users)
       .then((response) => {
         return response.json()
       })
@@ -73,7 +74,7 @@ export default class PlayAddPage extends Component {
       }
     }
 
-    fetch('http://localhost:3001/addPlay', fetchData)
+    fetch(config.api.playsAdd, fetchData)
       .then( (response) => response.json() )
       .then( (json) => {
         console.log('added')

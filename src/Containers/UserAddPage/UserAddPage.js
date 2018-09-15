@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-fetch';
 import Form from 'react-jsonschema-form';
+import config from '../../config';
 
 // TODO: change bind to arrow, use jsonschemaform
 const schema = {
@@ -35,7 +36,7 @@ export default class UserAddPage extends Component {
       }
     }
 
-    fetch('http://localhost:3001/addUser', fetchData)
+    fetch(config.api.usersAdd, fetchData)
       .then( (response) => response.json() )
       .then( (json) => {
         console.log('added')

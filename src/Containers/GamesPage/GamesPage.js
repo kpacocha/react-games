@@ -12,6 +12,7 @@ import {
 import TableCustom from '../../Components/TableCustom/TableCustom';
 
 import { parseTimestamp } from '../../utils/parseTimestamp'
+import config from '../../config';
 
 export default class GamesPage extends Component {
 	constructor(props) {
@@ -22,7 +23,7 @@ export default class GamesPage extends Component {
 	}
 
 	componentWillMount(){
-    fetch('http://192.168.0.16:3001/games')
+    fetch(config.api.games)
       .then((response) => {
         return response.json()
       })

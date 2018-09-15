@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-fetch';
 import Form from 'react-jsonschema-form';
+import config from '../../config';
 
 // TODO: change bind to arrow, use jsonschemaform
 const schema = {
@@ -26,12 +27,6 @@ const uiSchema = {
 const log = (type) => console.log.bind(console, type);
 
 export default class GameAddPage extends Component {
-	constructor(props) {
-    super(props);
-    this.state = {value: ''};
-
-  }
-
   __addGame = (data) => {
     const fetchData = {
       method: 'POST',
@@ -42,12 +37,10 @@ export default class GameAddPage extends Component {
       }
     }
 
-    fetch('http://localhost:3001/addGame', fetchData)
+    fetch(config.api.gamesAdd, fetchData)
       .then( (response) => response.json() )
       .then( (json) => {
         console.log('added')
-
-        //this.setState({info: `Post #${json.id} was saved.`})
       });
   }
 
